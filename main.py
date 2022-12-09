@@ -5,16 +5,15 @@ from pynput.mouse import Button, Controller
 
 # pynput.keyboard is used to watch events of
 # keyboard for start and stop of auto-clicker
-from pynput.keyboard import Listener, KeyCode, Key
-
+from pynput.keyboard import Listener, Key
 
 # four variables are created to
 # control the auto-clicker
-delay = 0.000000001
+delay = 0.001
 button = Button.left
 # start_stop_key = KeyCode(char='a')
 # stop_key = KeyCode(char='b')
-start_stop_key = KeyCode(char='s')
+start_stop_key = Key.ctrl_r
 stop_key = Key.esc
 
 # threading.Thread is used
