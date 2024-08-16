@@ -1,6 +1,4 @@
 import threading
-import tkinter as tk
-import tkinter as ttk
 
 from pynput.keyboard import Key, Listener
 from pynput.mouse import Button, Controller
@@ -41,7 +39,7 @@ def handle_key():
     pass
 
 def on_press(key):
-	if key == Key.ctrl_r:
+	if key == Key.alt_r:
 		print(f"click_thread.running = {click_thread.running}")
 		if click_thread.running:
 			click_thread.stop_clicking()
@@ -53,32 +51,5 @@ def on_press(key):
 		click_thread.exit()
 		exit()
 
-
-# gui elements
-window = tk.Tk()
-window.title("Autoclicker")
-window.resizable(width=False, height=False)
-
-padding_frm = ttk.Frame(master=window,
-                        borderwidth=3,
-                        padx=10,
-                        pady=5)
-instruct_frm = ttk.Frame(master=padding_frm,
-                         relief=tk.GROOVE,
-                         borderwidth=2)
-instruct_lbl = ttk.Label(master=instruct_frm,
-                         text="Click the button to set the Autoclicker hotkey")
-assign_frm = ttk.Frame(master=padding_frm,
-                       relief = tk.GROOVE,
-                       borderwidth=2)
-assign_btn = ttk.Button(master=assign_frm,
-                        text="Assign Hotkey",
-                        command=handle_key)
-
-padding_frm.pack()
-instruct_frm.pack()
-instruct_lbl.pack()
-assign_frm.pack()
-assign_btn.pack()
-
-window.mainloop()
+with Listener(on_press=on_press) as listener:
+	listener.join()
