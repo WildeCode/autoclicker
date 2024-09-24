@@ -49,6 +49,7 @@ def on_press(key):
 			print("starting")
 	if key == Key.esc:
 		click_thread.exit()
+		# if you don't exit will multiple simultaneous threads be possible?
 		exit()
 
 with Listener(on_press=on_press) as listener:
