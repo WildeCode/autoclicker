@@ -39,7 +39,7 @@ def handle_key():
     pass
 
 def on_press(key):
-	if key == Key.alt_r:
+	if key in [Key.alt_r, Key.alt_gr]:
 		print(f"click_thread.running = {click_thread.running}")
 		if click_thread.running:
 			click_thread.stop_clicking()
